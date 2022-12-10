@@ -1,14 +1,145 @@
 ---
-title: "quarto_apa7_manuscript"
+title: "Title of Manuscript (Title Case)"
+subtitle: | 
+    Author 1, Author 2, and Author 3 \
+    \
+    Affiliation(s)
 format:
   docx:
     reference-doc: apa7-reference-doc.docx
+bibliography: references.bib
+nocite: | 
+  @Harvey1997-ve
+csl: apa.csl
+abstract: |
+    ### Abstract
+    
+    The abstract should be between 150 and 250 words.
+    
+    <br>
+    
+    _Keywords:_ keyword 1, keyword 2, keyword 3
 ---
 
-## Quarto
+```{r, eval=F, echo=F}
+# This area is reserved for technical comments
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Last update of apa.csl: 2022-10-02 (Fetched from the Zotero Style Repository)
+Last update of template.rmd: 2022-12-10
+Last update of apa_style_reference_document.docx: 2022-12-10
 
-```{r}
-1 + 1
+author:
+  - name: Norah Jones
+    affiliations:
+      - Carnegie Mellon University
+    orcid: 0000-0002-1825-0097
+    email: norah@jones.com
+    corresponding: true
+  - name: John Hamm
+    affiliations:
+      - Carnegie Mellon University
+    orcid: 0000-0003-1689-0557
+    email: john@hamm.com
+    corresponding: false
+
 ```
+
+### Repeat title of Manuscript above introduction (same style as abstract heading)
+
+The introduction does not get a heading labeled _introduction_, since it is clearly identifiably by its position in the manuscript.
+
+# First Level (Title Case)
+
+Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. 
+
+## Second Level (Title Case)
+
+Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+
+__Third level (Sentence case)__. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+
+*__Fourth level (Sentence case)__*. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+
+*Fifth level (Sentence case)*. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+
+# Citations From BibTex Bibliographies
+
+Example 1: Parenthetical citation from BibTex bibliography [@Simonsohn2015-yx].
+
+Example 2: Narrative citation of multiple authors, as in @Trotschel2013-zd.
+
+Example 3: Citing Schultze and colleagues [-@Schultze2015-in] in-text using the authors' names or correct abbreviation. 
+
+Note that the bibliography is automatically appended to the end of the document! You will have to manually move it above any appendix. To add a citation to the references list which has not been cited in the text (though highly unusual!), use the _nocite_ option in the rmd file's YAML header (see the citation of Harvey and Fischer, for example).
+
+Attention: Digital Object Identifiers (DOI), following APA 7, should be appended to article citations (which is already correctly done by the CSL file). Remember to export DOIs into the BibTex bibliography you use for rendering the manuscript!
+
+## Citing Multiple Sources
+
+Example 1: Multiple citations in one set of parentheses [@Trotschel2013-zd; @Simonsohn2015-yx; @Schultze2015-in]. 
+
+Attention: Citations will be rendered in the correct order (as specified by the selected citation style) even if the sources are not inserted in correct order into the square brackets.
+
+Example 2: Wrong use of multiple citations in one set of parentheses with a prefix [see @Trotschel2013-zd; @Simonsohn2015-yx; @Schultze2015-in]. When using prefixes, the citations have to be in correct order in the rmd source file. Otherwise the sorting will place the prefix at the wrong position in the resulting citation.
+
+Example 3: Correct use of multiple citations in one set of parentheses with a prefix [see @Schultze2015-in; @Simonsohn2015-yx; @Trotschel2013-zd].
+
+# Running Head
+
+The running head above each page in the manuscript has to be inserted in the _apa\_style\_reference\_document.docx_ for each manuscript individually.
+
+# Footnotes
+
+This sentence has a footnote attached to it. [^1]
+
+[^1]: Here we have the footnote.
+
+# Block Quotations
+
+> This is going to be a blockquote It has several lines and it is
+> easy to do in RMarkDown, if you happen to know the right syntax.
+> We need more words to achieve a line wrap.
+
+# Directions for implementing APA’s title case:
+
+1. Capitalize the first word of the title/heading and of any subtitle/subheading;
+2. Capitalize all “major” words (nouns, verbs, adjectives, adverbs, and pronouns) in the title/heading, including the second part of hyphenated major words (e.g., Self-Report not Self-report); and
+3. Capitalize all words of four letters or more.
+
+This boils down to using lowercase only for “minor” words of three letters or fewer, namely, for conjunctions (words like and, or, nor, and but), articles (the words a, an, and the), and prepositions (words like as, at, by, for, in, of, on, per, and to), as long as they aren’t the first word in a title or subtitle. You can see examples of title case in our post on reference titles.
+
+# Formatting Statistics
+
+```{r, echo=F}
+# This R chunk will load several functions which can generate APA conform inline reports of statistical analyses:
+
+
+# rep_correlation(r, df, p) -> Report a single correlation analysis
+
+# rep_chi_square(chi, df, n, p) -> Report a chi-square test
+
+# rep_t_test(t, df, p, d) -> Report a single t-test
+
+# rep_anova(f, df_btw, df_wi, p, eta_p) -> Report a single effect from an ANOVA
+
+# rep_anovas(f_max, p_min, eta_max) -> Report multiple (insignificant) effects from an ANOVA at once
+
+# rep_l_regression(b, b_se, or, or_lwr, or_upr, p) -> Report a single effect from a binary logistic regression analysis
+
+
+suppressWarnings(suppressMessages(source('http://www.e-scientifics.de/content/r-space/scripts/report_apa_statistics.r')))
+```
+
+Report a single correlation analysis, `r rep_correlation(r=-0.23, df=34, p=.04)`.
+
+Report a chi-square test, `r rep_chi_square(chi=44.57, df=1, n=82, p=0.0001)`.
+
+Report a single t-test, `r rep_t_test(t=29.96, df=80, p=0.0001, d=0.62)`.
+
+Report a single effect from an ANOVA, `r rep_anova(f=23.5, df_btw=1, df_wi=118, p=0.0003, eta_p=0.54)`.
+
+Report multiple (non-significant) F-results, all `r rep_anovas(f_max=0.5, p_min=0.633, eta_max=0.005)`.
+
+Report a single effect from a logistic regression analysis, `r rep_l_regression(b=.84, b_se=0.28, or=2.32, or_lwr=1.36, or_upr=4.04, p=.005)`.
+
+# References (Titles of References Always in Sentence Case)
