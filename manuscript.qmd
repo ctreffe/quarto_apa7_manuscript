@@ -7,6 +7,7 @@ subtitle: |
 format:
   docx:
     reference-doc: apa7-reference-doc.docx
+output-file: manuscript.docx
 bibliography: references.bib
 nocite: | 
   @Harvey1997-ve
